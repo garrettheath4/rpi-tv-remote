@@ -129,6 +129,8 @@ the lirc library to send (and optionally receive) IR data.
     * **Note:** After updating the LIRC configuration, you might need to restart the LIRC service with `sudo service lirc restart` or reboot the Raspberry Pi with `sudo reboot` for the changes to go into effect.
 
 ## Features
+<!-- [ ] is for TODOs and [X] is for finished features -->
+<!-- NOTE: Each feature in this list should be separated by a blank line since Atlassian Stash does not support checkmark [ ] lists like GitHub does. -->
 
 [ ] Use simple web app to display buttons and trigger corresponding IR signal(s) if a button is pressed
 
