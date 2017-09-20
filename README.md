@@ -1,4 +1,4 @@
-# Raspberry Pi Auto TV IR Controller
+# Raspberry Pi TV Remote
 
 ## Installation
 
