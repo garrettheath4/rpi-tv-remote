@@ -20,7 +20,7 @@ that users can simply press to perform a few commands, such as:
 ### Summary
 
 At its core, this project is designed to run on a Raspberry Pi 3 Model B
-running the Raspbian 8 "jessie" operating system. Some hardware is required to
+running the Raspbian Stretch operating system. Some hardware is required to
 allow the Raspberry Pi to send IR signals and a touchscreen display is required
 to allow user input. (If you're starting from scratch, all of the hardware
 including the Raspberry Pi should cost less than $200.) This project then uses
@@ -45,7 +45,7 @@ the lirc library to send (and optionally receive) IR data.
     * 7-inch touchscreen for Raspberry Pi ([Amazon][Screen])
     * Wall-mountable case for touchscreen and Raspberry Pi ([Amazon][Case])
 * Software
-    * Raspbian 8 "jessie" operating system with GUI
+    * Raspbian Stretch operating system with GUI
     * Software for writing Raspbian to MicroSD card (see Raspberry Pi guides for details)
     * LIRC library and software (see below for how to install)
     * Git software (see below for how to install)
@@ -117,24 +117,21 @@ the lirc library to send (and optionally receive) IR data.
 
 1. Restart the Raspberry Pi to apply the configuration changes: `sudo reboot`
 1. Install Git so you can download this project's files to the Raspberry Pi: `sudo apt-get install git`
-1. Generate an SSH keypair to enable passwordless authentication when downloading files from Stash: `ssh-keygen -t rsa -C "pi@$(hostname)"`
+1. Generate an SSH keypair to enable passwordless authentication when downloading files from GitHub: `ssh-keygen -t rsa -C "pi@$(hostname)"`
     * **Note:** When the utility runs, press `Enter` three times (without typing any answer to its questions) to accept the default file location and to not set a password for the SSH keys.
 1. Run `cat ~/.ssh/id_rsa.pub` to print the public key to your screen and then copy the key to your clipboard.
-1. On a web browser (on your laptop/desktop computer), log in to Stash as an admin of the tv-remote repository and go to http://stash.datawarehousellc.com:7990/plugins/servlet/ssh/projects/INF/repos/tv-remote/keys/add
-1. Make sure *Permission:* is set to *Read only* (not *Read/Write*), paste the key into the *Key:* field, and click **Add key**.
-1. Back in a terminal on your Raspberry Pi, clone this project to the Raspberry Pi: `git clone ssh://git@stash.datawarehousellc.com:7999/inf/tv-remote.git tv-remote`
-1. Switch your current directory to the directory containing the newly-cloned project files: `cd tv-remote`
+1. On a web browser (on your laptop/desktop computer), log in to GitHub as an admin of the rpi-tv-remote repository and go to https://github.com/garrettheath4/rpi-tv-remote/settings/keys
+1. Make sure *Allow write access* is unchecked, paste the key into the *Key:* field, and click **Add key**.
+1. Back in a terminal on your Raspberry Pi, clone this project to the Raspberry Pi: `git clone git@github.com:garrettheath4/rpi-tv-remote.git`
+1. Switch your current directory to the directory containing the newly-cloned project files: `cd rpi-tv-remote`
 1. Add the remote codes to the LIRC configuration file so that LIRC knows how to communicate with your device(s): `sudo cp -i remote_kitchen_tv.conf /etc/lirc/lircd.conf`
     * **Note:** This will overwrite whatever LIRC configurations you already have. If you have never used LIRC before on this Raspberry Pi, then they will probably be blank anyway and so it is safe to do this.
     * **Note:** After updating the LIRC configuration, you might need to restart the LIRC service with `sudo service lirc restart` or reboot the Raspberry Pi with `sudo reboot` for the changes to go into effect.
 
 ## Features
-<!-- [ ] is for TODOs and [X] is for finished features -->
-<!-- NOTE: Each feature in this list should be separated by a blank line since Atlassian Stash does not support checkmark [ ] lists like GitHub does. -->
 
-[ ] Use simple web app to display buttons and trigger corresponding IR signal(s) if a button is pressed
-
-[ ] Send a remote "dummy button" IR signal to TV to delay the TV's auto-shutoff feature and keep it on during the day (6am to 6pm)
+- [ ] Use simple web app to display buttons and trigger corresponding IR signal(s) if a button is pressed
+- [ ] Send a remote "dummy button" IR signal to TV to delay the TV's auto-shutoff feature and keep it on during the day (6am to 6pm)
 
 ## Useful Guides
 
