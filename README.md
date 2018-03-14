@@ -135,6 +135,7 @@ the *lirc* library to send (and optionally receive) IR data.
 - [ ] Use simple web app to display buttons and trigger corresponding IR signal(s) if a button is pressed
 - [ ] Add support for controlling TV over HDMI-CEC (instead of or in addition to IR signals)
 - [ ] Send a remote "dummy button" IR signal to TV to delay the TV's auto-shutoff feature and keep it on during the day (6am to 6pm)
+- [ ] Integrate with Google Calendar API to automatically switch to _Google Chromebox for Meetings_ device if there is a meeting starting in that room
 
 
 ## Useful Guides
