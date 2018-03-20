@@ -9,13 +9,13 @@ class App extends Component {
           <RemoteButton url="/api/source/chromebox" label="Google Hangouts"/>
           <RemoteButton url="/api/source/rpi" label="News Stream"/>
           <RemoteButton url="/api/test" label="Test 3"/>
-          <RemoteButton url="/api/test" label="Test 4"/>
+          <RemoteButton url="/api/volume/up" label="Volume Up"/>
         </div>
         <div className="row h-50">
           <RemoteButton url="/api/test" label="Test 5"/>
           <RemoteButton url="/api/test" label="Test 6"/>
           <RemoteButton url="/api/test" label="Test 7"/>
-          <RemoteButton url="/api/test" label="Test 8"/>
+          <RemoteButton url="/api/volume/down" label="Volume Down"/>
         </div>
       </div>
     );
