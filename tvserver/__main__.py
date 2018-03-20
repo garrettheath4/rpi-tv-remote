@@ -79,6 +79,8 @@ class Routes(BaseHTTPRequestHandler):
         routes = {
             '/api/test': "echo hello world",
             '/api/source/rpi': "echo as | cec-client RPI -s -d 1",
+            '/api/source/rpi/refresh': "which xdotool && xdotool key ctrl+r || echo No xdotool found",
+            '/api/source/rpi/reboot': "which cec-client && sudo reboot || echo Reboot failed because this is not the CEC client",
             '/api/source/chromebox': "echo 'tx 1F:82:10:00' | cec-client RPI --single-command --log-level 1",
             '/api/volume/up': "echo 'tx 10:44:41' | cec-client RPI --single-command --log-level 1; echo 'tx 10:45' | cec-client RPI --single-command --log-level 1",
             '/api/volume/down': "echo 'tx 10:44:42' | cec-client RPI --single-command --log-level 1; echo 'tx 10:45' | cec-client RPI --single-command --log-level 1",
