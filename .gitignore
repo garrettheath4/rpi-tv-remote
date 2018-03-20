@@ -10,3 +10,5 @@ tvserver/__pycache__/
 *.py[cod]
 *$py.class
 
+# webapp React frontent
+webapp/build.zip

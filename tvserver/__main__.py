@@ -13,6 +13,7 @@ __status__ = "Prototype"
 from os import curdir, sep
 import re
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import subprocess
 
 
 # Source: https://gist.github.com/bradmontgomery/2219997
@@ -69,23 +70,25 @@ class Routes(BaseHTTPRequestHandler):
             # Request is probably for a file that is not an approved extension
             self._send_not_found()
         else:
-            self._set_headers()
-            self.wfile.write(bytes(
-                ("<html><body>"
-                 "<h1>Hellow, orld!</h1>"
-                 "<p>You accessed path: %s</p>"
-                 "</body></html>") % self.path,
-                "utf-8"))
+            self._send_not_found()
 
     def do_HEAD(self):
         self._set_headers()
 
     def do_POST(self):
-        # Doesn't do anything with posted data
-        self._set_headers()
-        self.wfile.write(bytes(
-            "<html><body><h1>POST!</h1></body></html>",
-            "utf-8"))
+        routes = {
+            '/api/test': "echo hello world",
+            '/api/source/rpi': "echo as | cec-client RPI -s -d 1",
+            '/api/source/chromebox': "echo 'tx 1F:82:10:00' | cec-client RPI --single-command --log-level 1"
+        }
+        if self.path in routes:
+            subprocess.Popen(['sh', '-c', routes[self.path]])
+            self._set_headers()
+            self.wfile.write(bytes(
+                "<html><body><h1>POST!</h1></body></html>",
+                "utf-8"))
+        else:
+            self._send_not_found()
 
 
 def run(server_class=HTTPServer, handler_class=Routes, port=8080):
