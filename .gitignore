@@ -2,3 +2,8 @@
 *~
 *.swp
 
+# Python
+tvserver/__pycache__/
+*.py[cod]
+*$py.class
+
