@@ -18,7 +18,7 @@ export default class RemoteButton extends Component {
   render() {
     return (
       <button type="button" className="btn btn-primary btn-block h-100" onClick={this.handleClick}>
-        {this.props.label}
+        <h3>{this.props.label}</h3>
       </button>
     );
   }
