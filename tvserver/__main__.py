@@ -11,18 +11,36 @@ __email__ = "garrettheath4@gmail.com"
 __status__ = "Prototype"
 
 from os import curdir, sep
+import re
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 # Source: https://gist.github.com/bradmontgomery/2219997
 class Routes(BaseHTTPRequestHandler):
+
     def _set_headers(self, content_type='text/html'):
         self.send_response(200)
         self.send_header('Content-type', content_type)
         self.end_headers()
 
+    def _send_not_found(self):
+        self.send_error(404, "File Not Found", "%s does not exist" % self.path)
+
     def do_GET(self):
+        content_types = {
+            '.html': 'text/html',
+            '.htm':  'text/html',
+            '.ico':  'image/x-icon',
+            '.svg':  'image/svg+xml',
+            '.css':  'text/css',
+            '.js':   'application/javascript',
+            '.json': 'application/json',
+            '.map':  'application/x-navimap'
+        }
         static_folder = 'webapp' + sep + 'build'
+        file_extension_search = re.search('\\.[a-zA-Z]+$',
+                                          self.path.split('?')[0])
+
         if '..' in self.path:
             error_name = "Illegal Path"
             error_message = ("Path requested contains illegal '..' substring"
@@ -38,37 +56,18 @@ class Routes(BaseHTTPRequestHandler):
             error_message = ("Path requested contains illegal '~' character"
                              "- %s") % self.path
             self.send_error(403, error_name, error_message)
-        elif self.path.split("?")[0].endswith(".html") \
-                or self.path.endswith(".ico") \
-                or self.path.endswith(".svg") \
-                or self.path.endswith(".css") \
-                or self.path.endswith(".js") \
-                or self.path.endswith(".map"):
-            if self.path.endswith(".html") or self.path.endswith(".htm"):
-                self._set_headers("text/html")
-            elif self.path.endswith(".ico"):
-                self._set_headers("image/x-icon")
-            elif self.path.endswith(".svg"):
-                self._set_headers("image/svg+xml")
-            elif self.path.endswith(".css"):
-                self._set_headers("text/css")
-            elif self.path.endswith(".js"):
-                self._set_headers("application/javascript")
-            elif self.path.endswith(".map"):
-                self._set_headers("application/x-navimap")
-            else:
-                self._set_headers()
+        elif file_extension_search \
+                and file_extension_search.group(0) in content_types:
+            self._set_headers(content_types[file_extension_search.group(0)])
             try:
                 f = open(curdir + sep + static_folder + sep + self.path, 'rb')
                 self.wfile.write(f.read())
                 f.close()
             except IOError:
-                self.send_error(404, "File Not Found",
-                                "%s does not exist" % self.path)
+                self._send_not_found()
         elif '.' in self.path:
             # Request is probably for a file that is not an approved extension
-            self.send_error(404, "File Not Found",
-                            "%s does not exist" % self.path)
+            self._send_not_found()
         else:
             self._set_headers()
             self.wfile.write(bytes(
