@@ -11,6 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && zip -r build build && echo 'Login to copy build files to RPi' && scp build.zip pi@LobbyNews.local:~/tv-remote/webapp/ && echo 'Login to extract build files on RPi' && ssh pi@LobbyNews.local 'cd ~/tv-remote/webapp/ && unzip -uo build'"
   }
 }
