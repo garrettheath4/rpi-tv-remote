@@ -44,7 +44,7 @@ lines to the `~/.config/lxsession/LXDE-pi/autostart` file
 
 ```
 # For rpi-tv-remote:
-@nohup /home/pi/tv-remote/start.sh &
+@/home/pi/tv-remote/start.sh
 ```
 
 
@@ -98,7 +98,7 @@ the *lirc* library to send (and optionally receive) IR data.
     * The IR LED diode (and presumably the breadboard it is connected to) should be outside of the case and positioned in such a way that it is within line of sight of all of the IR sensors of all of the devices that you want to control.
 
 
-### Software Configuration
+### Raspberry Pi Configuration
 
 1. Follow guides on Raspberry Pi project website to login to the Raspberry Pi (using monitor and keyboard)
 1. Set password for default `pi` user
