@@ -2,7 +2,8 @@
 
 This project aims to turn a Raspberry Pi with a touchscreen into a universal
 remote for one or more devices (like a TV, cable box, and Apple TV).
-The Raspberry Pi will control devices by sending IR signals and/or CEC frames (if the device to be controlled is connected via HDMI).
+The Raspberry Pi will control devices by sending IR signals and/or CEC frames
+(if the device to be controlled is connected via HDMI).
 The touchscreen will display big buttons (as few as possible, for simplicity)
 that users can simply press to perform a few commands, such as:
 
@@ -23,6 +24,28 @@ that users can simply press to perform a few commands, such as:
     1. Turn on the TV
     1. Turn on the device that is streaming news videos from the internet (e.g. a Raspberry Pi using the [rpi-chrome-display] project; might be the same Rasbperry Pi as the one running this *rpi-tv-remote* project)
     1. Set the news feed device as the active input on the TV
+
+
+## Running
+
+After following the instructions in the _Installation_ section below,
+run the following commands to create a virtual Python environment and start the
+Python server within it on the Raspberry Pi:
+
+```
+cd rpi-tv-remote
+virtualenv venv
+venv/bin/python3 setup.py install
+venv/bin/python3 -m tvserver
+```
+
+Or start the remote server automatically during boot by adding the following
+lines to the `~/.config/lxsession/LXDE-pi/autostart` file
+
+```
+# For rpi-tv-remote:
+@nohup /home/pi/tv-remote/start.sh &
+```
 
 
 ## Installation
@@ -133,7 +156,7 @@ the *lirc* library to send (and optionally receive) IR data.
 ## Features and TODO
 
 - [ ] Use simple web app to display buttons and trigger corresponding IR signal(s) if a button is pressed
-- [ ] Add support for controlling TV over HDMI-CEC (instead of or in addition to IR signals)
+- [x] Add support for controlling TV over HDMI-CEC (instead of or in addition to IR signals)
 - [ ] Send a remote "dummy button" IR signal to TV to delay the TV's auto-shutoff feature and keep it on during the day (6am to 6pm)
 - [ ] Integrate with Google Calendar API to automatically switch to _Google Chromebox for Meetings_ device if there is a meeting starting in that room
 
