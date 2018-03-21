@@ -47,6 +47,10 @@ lines to the `~/.config/lxsession/LXDE-pi/autostart` file
 @/home/pi/tv-remote/start.sh
 ```
 
+If the Python server is running, TV remote webapp can be accessed from any
+device on the network by going to `http://RPI_IP_ADDRESS:8080/index.html`,
+where `RPI_IP_ADDRESS` is the IP address of the Raspberry Pi server.
+
 
 ## Installation
 
