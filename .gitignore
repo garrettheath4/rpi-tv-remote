@@ -6,9 +6,16 @@
 *.swp
 
 # Python
-tvserver/__pycache__/
 *.py[cod]
 *$py.class
+build/
+dist/
 
-# webapp React frontent
+# tvserver Python backend
+venv/
+tvserver/__pycache__/
+tvserver.egg-info/
+env.properties
+
+# webapp React frontend
 webapp/build.zip
