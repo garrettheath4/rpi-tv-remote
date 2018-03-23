@@ -82,6 +82,7 @@ class Routes(BaseHTTPRequestHandler):
             '/api/source/rpi/refresh': "which xdotool && xdotool key ctrl+r || echo Refresh failed because this is not the X server environment",
             '/api/source/rpi/reboot': "test $(whoami) = 'pi' && sudo reboot || echo Reboot failed because this is not the Raspberry Pi",
             '/api/source/chromebox': "echo 'tx 1F:82:10:00' | cec-client RPI --single-command --log-level 1",
+            '/api/source/chromecast': "echo 'tx 1F:82:10:00' | cec-client RPI --single-command --log-level 1",
             '/api/volume/up': "echo 'tx 10:44:41' | cec-client RPI --single-command --log-level 1; echo 'tx 10:45' | cec-client RPI --single-command --log-level 1",
             '/api/volume/down': "echo 'tx 10:44:42' | cec-client RPI --single-command --log-level 1; echo 'tx 10:45' | cec-client RPI --single-command --log-level 1",
         }

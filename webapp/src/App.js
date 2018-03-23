@@ -9,7 +9,7 @@ class App extends Component {
         <div className="container-fluid h-100">
           <div className="row h-50">
             <div className="col-sm-6 p-3">
-              <RemoteButton url="/api/source/chromebox" label="Google Hangouts"/>
+              <RemoteButton url="/api/source/chromecast" label="Chromecast"/>
             </div>
             <div className="col-sm-6 p-3">
               <RemoteButton url="/api/source/rpi" label="News Stream"/>
