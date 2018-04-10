@@ -16,6 +16,3 @@ venv/
 tvserver/__pycache__/
 tvserver.egg-info/
 env.properties
-
-# webapp React frontend
-webapp/build.zip
