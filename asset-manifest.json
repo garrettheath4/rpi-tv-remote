@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rpi-tv-remote/static/css/main.a2b7b0b6.chunk.css",
+    "main.js": "/rpi-tv-remote/static/js/main.d53a7513.chunk.js",
+    "main.js.map": "/rpi-tv-remote/static/js/main.d53a7513.chunk.js.map",
+    "runtime-main.js": "/rpi-tv-remote/static/js/runtime-main.a3519f75.js",
+    "runtime-main.js.map": "/rpi-tv-remote/static/js/runtime-main.a3519f75.js.map",
+    "static/js/2.f1863037.chunk.js": "/rpi-tv-remote/static/js/2.f1863037.chunk.js",
+    "static/js/2.f1863037.chunk.js.map": "/rpi-tv-remote/static/js/2.f1863037.chunk.js.map",
+    "index.html": "/rpi-tv-remote/index.html",
+    "precache-manifest.eb0ac8aa39dc38f6016e0fb52bc993c6.js": "/rpi-tv-remote/precache-manifest.eb0ac8aa39dc38f6016e0fb52bc993c6.js",
+    "service-worker.js": "/rpi-tv-remote/service-worker.js",
+    "static/css/main.a2b7b0b6.chunk.css.map": "/rpi-tv-remote/static/css/main.a2b7b0b6.chunk.css.map",
+    "static/js/2.f1863037.chunk.js.LICENSE.txt": "/rpi-tv-remote/static/js/2.f1863037.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a3519f75.js",
+    "static/js/2.f1863037.chunk.js",
+    "static/css/main.a2b7b0b6.chunk.css",
+    "static/js/main.d53a7513.chunk.js"
+  ]
+}
