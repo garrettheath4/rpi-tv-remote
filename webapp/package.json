@@ -2,6 +2,7 @@
   "name": "webapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://garrettheath4.github.io/rpi-tv-remote",
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -12,7 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && zip -r build build && echo 'Login to copy build files to RPi' && scp build.zip pi@LobbyNews.local:~/tv-remote/webapp/ && echo 'Login to extract build files on RPi' && ssh pi@LobbyNews.local 'cd ~/tv-remote/webapp/ && unzip -uo build'"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
